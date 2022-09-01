@@ -1,0 +1,1 @@
+This can be done using non shrinkable sliding window, if Aj[j] is 0 we''' delete it hence move i a step ahead as it;ll delete the number For non shrinable would be same as shrinakble except we just replace while with if
