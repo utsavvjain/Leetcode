@@ -1,23 +1,16 @@
 class Solution {
-    public int maxProfit(int[] prices,int index,boolean buy,int dp[][]) {
-        if(index>=prices.length) return 0;
-        if(dp[index][(buy)?0:1]!=-1) return dp[index][(buy)?0:1];
-        int profit=0;
-        if(buy){
-            profit=Math.max(maxProfit(prices,index+1,true,dp),maxProfit(prices,index+1,false,dp)-prices[index]);
-        }
-        else{
-            profit=Math.max(maxProfit(prices,index+1,false,dp),maxProfit(prices,index+2,true,dp)+prices[index]);            
-        }
-        return dp[index][(buy)?0:1]=profit;
-    }
     public int maxProfit(int[] prices) {
-        int dp[][]=new int[prices.length+1][2];
-        for(int i=0;i<dp.length;i++){
-            for(int j=0;j<2;j++){
-                dp[i][j]=-1;
+        int dp[][]=new int[2][prices.length+2];
+        for(int index=prices.length-1;index>=0;index--){
+            for(int buy=0;buy<2;buy++){
+                if(buy==1){
+                    dp[buy][index]=Math.max(dp[1][index+1],dp[0][index+1]-prices[index]);
+                }
+                else{
+                    dp[buy][index]=Math.max(dp[0][index+1],dp[1][index+2]+prices[index]);       
+                }
             }
         }
-        return maxProfit(prices,0,true,dp);
+        return dp[1][0];
     }
 }
