@@ -1,0 +1,1 @@
+Greddy would be buy on dip and sell on peak
