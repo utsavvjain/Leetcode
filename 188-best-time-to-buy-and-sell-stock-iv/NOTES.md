@@ -1,0 +1,1 @@
+Transaction Buy then sell only then k would be -1
