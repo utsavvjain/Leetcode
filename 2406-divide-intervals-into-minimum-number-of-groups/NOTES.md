@@ -1,0 +1,1 @@
+Sort acc to interval[0] then take a PQ and add each upper bound to it
