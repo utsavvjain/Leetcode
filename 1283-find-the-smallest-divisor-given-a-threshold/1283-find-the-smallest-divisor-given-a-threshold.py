@@ -3,7 +3,7 @@ class Solution:
         def feas(mid) : 
             sm1=0
             for i in nums : 
-                sm1+=ceil(i/mid)
+                sm1+=(i+mid-1)//mid
             return sm1<=threshold
         left=1
         right=max(nums)
