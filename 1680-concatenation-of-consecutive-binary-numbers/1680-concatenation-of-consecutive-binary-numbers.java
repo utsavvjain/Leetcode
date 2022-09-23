@@ -1,7 +1,12 @@
-class Solution:
-    def concatenatedBinary(self, n: int) -> int:
-        ans=''
-        for i in range(1,n+1) : 
-            ans+=bin(i)[2:]
-        return int(ans,2) % int(1e9+7)
-        
+class Solution {
+    public int concatenatedBinary(int n) {
+        long MOD=(long)1e9+7;
+        long ans=0;
+        int len=0;
+        for(int i=1;i<=n;i++){
+            if((i&(i-1))==0) len+=1;
+            ans=((ans<<len) + i)%MOD;
+        }
+        return (int)ans;
+    }
+}
