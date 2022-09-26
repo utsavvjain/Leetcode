@@ -1,0 +1,1 @@
+Disjoint sets the one's that are equals in same set and other in other
