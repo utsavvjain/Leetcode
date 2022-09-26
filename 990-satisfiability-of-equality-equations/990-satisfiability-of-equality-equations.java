@@ -1,11 +1,18 @@
 class Solution {
     char []set;
-    
+    int vals[];
     public void union(char a,char b){
         if(a==b) return;
         char parA=find(a);
         char parB=find(b);
-        set[parA-'a']=parB;        
+        if(vals[parA-'a']<vals[parB-'a']){
+            set[parB-'a']=parA;                
+            vals[parB-'a']+=vals[parA-'a'];
+        }
+        else{
+            set[parA-'a']=parB;        
+            vals[parA-'a']+=vals[parB-'a'];
+        }
     }
     public char find(char a){
         if(a==set[a-'a']) return a;
@@ -13,7 +20,11 @@ class Solution {
     }
     public boolean equationsPossible(String[] equations) {
         set=new char[26];
-        for(char i='a';i<='z';i++) set[i-'a']=i;
+        vals=new int[26];
+        for(char i='a';i<='z';i++){
+            set[i-'a']=i;
+            vals[i-'a']=1;
+        } 
         List<String> notEquals=new LinkedList<>();
         for(String eq : equations){
             if(eq.contains("!=")) notEquals.add(eq);
