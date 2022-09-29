@@ -1,13 +1,14 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        int low=0;
-        int high=arr.length-1;
-        while(high-low+1>k){
-            if(x-arr[low]<=arr[high]-x) high--;
-            else low++;
+        int left=0;
+        int right=arr.length-k;
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(x-arr[mid]>arr[mid+k]-x) left=mid+1;
+            else right=mid;
         }
         List<Integer> ans=new LinkedList<>();
-        for(int i=low;i<=high;i++) ans.add(arr[i]);
+        for(int i=left;i<right+k;i++) ans.add(arr[i]);
         return ans;
     }
 }
