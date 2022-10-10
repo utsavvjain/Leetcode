@@ -2,24 +2,18 @@ class Solution {
     public String breakPalindrome(String palindrome) {
         StringBuilder sb=new StringBuilder(palindrome);
         if(sb.length()==1) return "";
-        for(int i=0;i<sb.length();i++){
+        int n=sb.length()/2;
+        for(int i=0;i<n;i++){
             if(sb.charAt(i)=='a') {
-                if(i!=sb.length()-1) continue;
-                sb.setCharAt(i,'b');
+                if(i!=n-1) continue;
+                sb.setCharAt(sb.length()-1,'b');
                 return sb.toString();
                 
             }
             char oldChar=sb.charAt(i);
-            for(char chr='a';chr<oldChar;chr++){
-                sb.setCharAt(i,chr);
-                if(!isPalindrome(sb)) return sb.toString();
-            }
-            sb.setCharAt(i,oldChar);
+            sb.setCharAt(i,'a');
+            return sb.toString();
         }
         return "";
-    }
-    public boolean isPalindrome(StringBuilder s){
-        for(int i=0,j=s.length()-1;i<j;i++,j--) if(s.charAt(i)!=s.charAt(j)) return false;
-        return true;
     }
 }
