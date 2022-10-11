@@ -1,16 +1,10 @@
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        List<Integer> list=new ArrayList<>();
+        int first=Integer.MAX_VALUE,second=Integer.MAX_VALUE;
         for(int num : nums){
-            if(list.isEmpty() || num>list.get(list.size()-1)){
-              list.add(num);
-                if(list.size()>2) return true;
-            } 
-            else{
-                int position=Collections.binarySearch(list,num);
-                if(position<0) position=(-position)-1;
-                list.set(position,num);
-            }
+            if(first>=num) first=num;
+            else if(second>=num) second=num;
+            else return true;
         }
         return false;
     }
