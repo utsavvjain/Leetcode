@@ -1,0 +1,1 @@
+For any String you can move any char to anywhere if you can swap adjacent characters
